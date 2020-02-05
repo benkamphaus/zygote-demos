@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  lab:
+    # build: .
+    build:
+        context: .
+        dockerfile: Dockerfile
+    volumes:
+     - ./project/:/project
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=1
+    command: start-notebook.sh --NotebookApp.notebook_dir=/project/notebooks
